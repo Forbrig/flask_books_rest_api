@@ -24,9 +24,11 @@ class Book(db.Model):
         return [Book.json(book) for book in Book.query.all()]
 
     def get_book(_isbn):
-        book = Book.json(Book.query.filter_by(isbn=_isbn).first())
-        print(book)
-        return book
+        book = Book.query.filter_by(isbn=_isbn).first()
+        if book is None:
+            return False
+        else:
+            return Book.json(book)
 
     def delete_book(_isbn):
         is_successful = Book.query.filter_by(isbn=_isbn).delete()
