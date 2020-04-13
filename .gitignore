@@ -1,0 +1,6 @@
+
+\.vscode/
+
+src/virtual/
+
+src/__pycache__/
